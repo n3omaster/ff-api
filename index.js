@@ -27,7 +27,7 @@ const currencyAppend = (name, body, data) => {
 }
 
 class FixedFloat {
-    
+
     /**
      * Main API class
      * @param {String} apiKey API key
@@ -36,7 +36,7 @@ class FixedFloat {
      */
     constructor(apiKey, secretKey) {
         if (!apiKey || !secretKey) throw new Error('Please provide an API and secret keys');
-        this.mainURL = 'https://ff.io/api/v2/';
+        this.mainURL = 'https://ff.io/';
         this.apiKey = apiKey;
         this.secretKey = secretKey;
     }
@@ -65,8 +65,22 @@ class FixedFloat {
     /**
      * Getting a list of all currencies that are available on FixedFloat.com.
      */
-    async getCurrencies() {
-        return await this._request('GET', 'getCurrencies')
+    // async getCurrencies() {
+    //     return await this._request('GET', 'getCurrencies')
+    // }
+
+    /**
+     * Get fixed rate for exchange
+     */
+    async getFixedRate() {
+        return await this._request('GET', '/rates/fixed.xml')
+    }
+
+    /**
+     * Get float rate for exchange
+     */
+    async getFloatRate() {
+        return await this._request('GET', '/rates/float.xml')
     }
 
     /**
