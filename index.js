@@ -1,6 +1,6 @@
-const axios = require('axios').default;
-const { Method } = require('axios');
-const crypto = require('crypto');
+const axios = require('axios')
+const { Method } = require('axios')
+const crypto = require('crypto')
 
 const STATES = [
     'Transaction expected',
@@ -27,6 +27,7 @@ const currencyAppend = (name, body, data) => {
 }
 
 class FixedFloat {
+    
     /**
      * Main API class
      * @param {String} apiKey API key
@@ -35,7 +36,7 @@ class FixedFloat {
      */
     constructor(apiKey, secretKey) {
         if (!apiKey || !secretKey) throw new Error('Please provide an API and secret keys');
-        this.mainURL = 'https://fixedfloat.com/api/v1/';
+        this.mainURL = 'https://ff.io/api/v2/';
         this.apiKey = apiKey;
         this.secretKey = secretKey;
     }
@@ -76,7 +77,7 @@ class FixedFloat {
      */
     async getPrice(from, to, type = 'float') {
         if (!from || !to || from.indexOf(' ') + to.indexOf(' ') === -2) throw new Error(`No required params. Example: {from: '0.1 ETH', to: 'BTC'}`);
-        const body = new URLSearchParams({type});
+        const body = new URLSearchParams({ type });
         currencyAppend('from', body, from);
         currencyAppend('to', body, to);
         return await this._request('POST', 'getPrice', body.toString())
@@ -88,7 +89,7 @@ class FixedFloat {
      * @param {String} token Security token of order
      */
     async getOrder(id, token) {
-        const body = new URLSearchParams({id, token});
+        const body = new URLSearchParams({ id, token });
         return resolveState(await this._request('GET', 'getOrder', body.toString()));
     }
 
@@ -100,7 +101,7 @@ class FixedFloat {
      * @param {String} address refund address, required if choice="REFUND"
      */
     async setEmergency(id, token, choice, address) {
-        const body = new URLSearchParams({id, token, choice, address});
+        const body = new URLSearchParams({ id, token, choice, address });
         return await this._request('GET', 'setEmergency', body.toString())
     }
 
@@ -114,7 +115,7 @@ class FixedFloat {
      */
     async createOrder(from, to, toAddress, type = 'float', extra) {
         if (!from || !to || from.indexOf(' ') + to.indexOf(' ') === -2) throw new Error(`No required params. Example: {from: '0.1 ETH', to: 'BTC', ...}`);
-        const body = new URLSearchParams({type, toAddress});
+        const body = new URLSearchParams({ type, toAddress });
         currencyAppend('from', body, from);
         currencyAppend('to', body, to);
         if (extra) body.append('extra', extra);
@@ -122,4 +123,4 @@ class FixedFloat {
     }
 }
 
-module.exports = FixedFloat;
+module.exports = FixedFloat

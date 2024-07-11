@@ -1,11 +1,11 @@
 {
-  "name": "fixedfloat-api",
-  "version": "1.0.1",
-  "description": "Simple API wrapper for fixedfloat.com",
+  "name": "ff-api",
+  "version": "1.0.0",
+  "description": "Simple API wrapper for ff.io",
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/wilddip/fixedfloat-api.git"
+    "url": "git+https://github.com/n3omaster/ff-api.git"
   },
   "keywords": [
     "fixedfloat",
@@ -13,13 +13,16 @@
     "exchange",
     "api"
   ],
-  "author": "wilddip (https://github.com/wilddip/)",
+  "author": "n3omaster (https://github.com/n3omaster/)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/wilddip/fixedfloat-api/issues"
+    "url": "https://github.com/n3omaster/ff-api/issues"
   },
-  "homepage": "https://github.com/wilddip/fixedfloat-api#readme",
+  "homepage": "https://github.com/n3omaster/ff-api#readme",
   "dependencies": {
-    "axios": "^0.26.0"
+    "axios": "^1.7.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
   }
 }
